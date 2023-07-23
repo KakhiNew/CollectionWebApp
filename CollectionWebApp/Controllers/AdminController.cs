@@ -1,4 +1,6 @@
-﻿using CollectionWebApp.BusinessManagers.Interfaces;
+﻿using CollectionWebApp.BusinessManagers;
+using CollectionWebApp.BusinessManagers.Interfaces;
+using CollectionWebApp.Data.Models;
 using CollectionWebApp.Models.AdminViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +12,20 @@ namespace CollectionWebApp.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminBusinessManager adminBusinessManager;
+        private readonly IPostBusinessManager postBusinessManager;
 
         public AdminController(IAdminBusinessManager adminBusinessManager)
         {
             this.adminBusinessManager = adminBusinessManager;
+            this.postBusinessManager = postBusinessManager;
+
         }
 
-        public async Task<IActionResult> Index()
-        {
-            return View(await adminBusinessManager.GetAdminDashboard(User));
-        }
+      //  public async Task<IActionResult> Index()
+       // {
+            //return View(await adminBusinessManager.GetAdminDashboard(User));
+
+       // }
 
         public async Task<IActionResult> About()
         {
@@ -32,6 +38,15 @@ namespace CollectionWebApp.Controllers
             await adminBusinessManager.UpdateAbout(aboutViewModel, User);
             return RedirectToAction("About");
         }
+         [HttpPost]
+         public async Task<IActionResult> Index()
+         {
+           bool isAdmin = User.IsInRole(ApplicationUserRole.Admin.ToString());
+
+           var viewModel = await adminBusinessManager.GetAdminDashboardViewModel(isAdmin);
+
+          return View(viewModel);
+         }
 
     }
 }

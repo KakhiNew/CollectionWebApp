@@ -3,13 +3,10 @@ using CollectionWebApp.BusinessManagers.Interfaces;
 using CollectionWebApp.Data.Models;
 using CollectionWebApp.Models.HomeViewModel;
 using CollectionWebApp.Models.PostViewModel;
-using CollectionWebApp.Services;
 using CollectionWebApp.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.Hosting;
 using PagedList.Core;
 using System.Security.Claims;
 
@@ -34,12 +31,18 @@ namespace CollectionWebApp.BusinessManagers
             this.authorizationService = authorizationService;
         }
 
-        public IndexVm GetIndexViewModel(string searchString, int? page)
+        public IndexVm GetIndexViewModel(string searchString, int? page, bool onlyPublished)
         {
             int pageSize = 20;
             int pageNumber = page ?? 1;
-            var posts = postService.GetPosts(searchString ?? string.Empty)
-                .Where(post => post.Published);
+
+            var postsQuery = postService.GetPosts(searchString ?? string.Empty);
+            if (onlyPublished)
+            {
+                postsQuery = postsQuery.Where(post => post.Published);
+            }
+
+            var posts = postsQuery.ToList();
 
             return new IndexVm
             {
@@ -88,11 +91,11 @@ namespace CollectionWebApp.BusinessManagers
 
             EnsureFolder(pathToImage);
 
-            using (var fileStream = new FileStream(pathToImage, FileMode.Create))
+            if (vm.HeaderImage is not null)
             {
+                using var fileStream = new FileStream(pathToImage, FileMode.Create);
                 await vm.HeaderImage.CopyToAsync(fileStream);
             }
-
 
             return post;
 
@@ -156,7 +159,7 @@ namespace CollectionWebApp.BusinessManagers
             };
         }
 
-    
+
 
         public async Task<ActionResult<EditVm>> GetEditViewModel(int? id, ClaimsPrincipal claimsPrincipal)
         {
@@ -180,7 +183,31 @@ namespace CollectionWebApp.BusinessManagers
             };
         }
 
-        private ActionResult DetermineActionResult(ClaimsPrincipal claimsPrincipal)
+        public async Task DeletePost(int postId, ClaimsPrincipal claimsPrincipal)
+        {
+            var post = postService.GetPost(postId);
+
+            if (post is null)
+                return;
+
+            var authorizationResult = await authorizationService.AuthorizeAsync(claimsPrincipal, post, Operations.Delete);
+
+            if (!authorizationResult.Succeeded)
+                return;
+
+            string webRootPath = webHostEnvironment.WebRootPath;
+            string pathToImage = $@"{webRootPath}\UserFiles\Posts\{post.Id}\HeaderImage.jpg";
+            if (File.Exists(pathToImage))
+            {
+                File.Delete(pathToImage);
+            }
+
+            await postService.Delete(post);
+        }
+
+    
+
+    private ActionResult DetermineActionResult(ClaimsPrincipal claimsPrincipal)
         {
             if (claimsPrincipal.Identity.IsAuthenticated)
                 return new ForbidResult();

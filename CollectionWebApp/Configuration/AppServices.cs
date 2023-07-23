@@ -33,6 +33,8 @@ namespace CollectionWeb.Configuration
             serviceCollection.AddScoped<IUserService, UserService>();
 
             serviceCollection.AddTransient<IAuthorizationHandler, PostAuthorizationHandler>();
+
+            serviceCollection.AddScoped<IDataSeederService, DataSeederService>();
         }
     }
 }

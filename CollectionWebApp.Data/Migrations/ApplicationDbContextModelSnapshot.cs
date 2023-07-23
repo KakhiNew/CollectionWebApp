@@ -28,7 +28,6 @@ namespace CollectionWebApp.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AboutContent")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AccessFailedCount")
@@ -80,7 +79,6 @@ namespace CollectionWebApp.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubHeader")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -121,7 +119,7 @@ namespace CollectionWebApp.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ParentId")
+                    b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
                     b.Property<int>("PostId")
@@ -322,9 +320,7 @@ namespace CollectionWebApp.Data.Migrations
 
                     b.HasOne("CollectionWebApp.Data.Models.Comment", "Parent")
                         .WithMany("Comments")
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParentId");
 
                     b.HasOne("CollectionWebApp.Data.Models.Post", "Post")
                         .WithMany("Comments")

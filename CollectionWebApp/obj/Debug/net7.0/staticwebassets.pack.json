@@ -5,6 +5,34 @@
       "PackagePath": "staticwebassets\\CollectionWebApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\10\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Posts\\10\\HeaderImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\11\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Posts\\11\\HeaderImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\1\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Posts\\1\\HeaderImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\6\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Posts\\6\\HeaderImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\7\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Posts\\7\\HeaderImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Users\\50ccf9b1-3d87-45c1-8ec1-9ad2acefd195\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Users\\50ccf9b1-3d87-45c1-8ec1-9ad2acefd195\\HeaderImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Users\\f8ec4f4d-b352-4480-9d13-63f4bfd6cdeb\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Users\\f8ec4f4d-b352-4480-9d13-63f4bfd6cdeb\\HeaderImage.jpg"
+    },
+    {
       "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\Vendor\\about.html",
       "PackagePath": "staticwebassets\\Vendor\\about.html"
     },
@@ -43,6 +71,10 @@
     {
       "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\css\\style.min.css",
+      "PackagePath": "staticwebassets\\css\\style.min.css"
     },
     {
       "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\css\\styles.css",

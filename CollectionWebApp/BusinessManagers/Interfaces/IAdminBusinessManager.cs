@@ -8,5 +8,6 @@ namespace CollectionWebApp.BusinessManagers.Interfaces
         Task<IndexVm> GetAdminDashboard(ClaimsPrincipal claimsPrincipal);
         Task<AboutViewModel> GetAboutViewModel(ClaimsPrincipal claimsPrincipal);
         Task UpdateAbout(AboutViewModel aboutViewModel, ClaimsPrincipal claimsPrincipal);
+        Task<string?> GetAdminDashboardViewModel(bool isAdmin);
     }
 }

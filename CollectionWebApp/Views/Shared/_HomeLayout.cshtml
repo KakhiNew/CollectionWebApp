@@ -1,5 +1,4 @@
-﻿﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,24 +8,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>QuiqBlog</title>
+    <title>CollectionWebApp</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
     <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
+    
     <!-- Custom styles for this template -->
-    <link href="~/css/clean-blog.min.css" rel="stylesheet">
+    <link href="~/css/style.min.css" rel="stylesheet">
     @RenderSection("Styles", required: false)
 
 </head>
 <body>
 
-    @await Component.InvokeAsync("Navigation")
+    @await Component.InvokeAsync("Nav")
 
     <header class="masthead" style="background-image: url('@ViewData["HeaderImage"]')">
         <div class="overlay"></div>
@@ -59,9 +57,9 @@
 
     @await Component.InvokeAsync("Footer")
 
-    <script src="~/vendor/jquery/jquery.min.js"></script>
-    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/clean-blog.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

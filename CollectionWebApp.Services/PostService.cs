@@ -2,11 +2,6 @@
 using CollectionWebApp.Data.Models;
 using CollectionWebApp.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CollectionWebApp.Services
 {
@@ -19,16 +14,14 @@ namespace CollectionWebApp.Services
             this.applicationDbContext = applicationDbContext;
         }
 
-
-        public Post GetPost(int postId)
+        public Post? GetPost(int postId)
         {
             return applicationDbContext.Posts
                 .Include(post => post.Creator)
                 .Include(post => post.Comments)
-                .ThenInclude(comment => comment.Author)
+                    .ThenInclude(comment => comment.Author)
                 .Include(post => post.Comments)
-                .ThenInclude(comment => comment.Comments)
-                .ThenInclude(reply => reply.Parent)
+                    .ThenInclude(comment => comment.Comments)
                 .FirstOrDefault(post => post.Id == postId);
         }
 
@@ -82,6 +75,22 @@ namespace CollectionWebApp.Services
             return post;
         }
 
+        public async Task Delete(Post post)
+        {
+            var comments = applicationDbContext.Comments.Where(c => c.Post.Id == post.Id);
+            applicationDbContext.Comments.RemoveRange(comments);
 
+         
+            applicationDbContext.Posts.Remove(post);
+
+            await applicationDbContext.SaveChangesAsync();
+
+            string webRootPath = ""; 
+            string pathToImage = $@"{webRootPath}\UserFiles\Posts\{post.Id}\HeaderImage.jpg";
+            if (File.Exists(pathToImage))
+            {
+                File.Delete(pathToImage);
+            }
+        }
     }
 }

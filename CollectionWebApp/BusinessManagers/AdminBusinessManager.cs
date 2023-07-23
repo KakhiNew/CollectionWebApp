@@ -14,6 +14,9 @@ namespace CollectionWebApp.BusinessManagers
         private readonly IPostService postService;
         private readonly IUserService userService;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IPostBusinessManager postBusinessManager;
+
+
 
         public AdminBusinessManager(
              UserManager<ApplicationUser> userManager,
@@ -34,6 +37,8 @@ namespace CollectionWebApp.BusinessManagers
             {
                 Posts = postService.GetPosts(applicationUser)
             };
+
+
         }
 
         public async Task<AboutViewModel> GetAboutViewModel(ClaimsPrincipal claimsPrincipal)
@@ -78,5 +83,19 @@ namespace CollectionWebApp.BusinessManagers
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
         }
+
+        // public async Task<AdminDashboardViewModel> GetAdminDashboardViewModel(bool showUnpublishedPosts)
+        // {
+        //    var publishedPosts = await postQuery.GetPublishedPosts();
+        //    var unpublishedPosts = showUnpublishedPosts ? await posQuery.GetUnpublishedPosts() : null;
+        //
+        //    var viewModel = new AdminDashboardViewModel
+        //    {
+        //      PublishedPosts = publishedPosts,
+        //     UnpublishedPosts = unpublishedPosts
+        //  };
+
+        //   return viewModel;
+        // }
     }
 }

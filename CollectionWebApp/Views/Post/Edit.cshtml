@@ -37,10 +37,35 @@
                             <input type="checkbox" data-toggle="toggle" asp-for="Post.Published">
                             </br>
                             <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-danger float-right" type="button" data-toggle="modal" data-target="#confirmDeleteModal">
+                                Delete
+                            </button>
                         </div>
                         <p style="color: orangered; margin-bottom: 0;">Please Note:</p>
                         <p>Your post will need to be approved before it is published to the main page. Please feel free to email me to approve your post.</p>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this post?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form asp-controller="Post" asp-action="Delete" method="post">
+                    <input asp-for="Post.Id" readonly hidden />
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
         </div>

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using CollectionWebApp.Authorization;
 using System.Configuration;
 using CollectionWeb.Configuration;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,17 +24,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
    //.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+//builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
 AppServices.AddServices(builder.Services, builder.Configuration);
-
-//var services = new ServiceCollection();
-//services.AddScoped<IPostBusinessManager, PostBusinessManager>();
-//services.AddScoped<IPostService, PostService>();
-//services.AddScoped<IAdminBusinessManager, AdminBusinessManager>();
-//services.AddTransient<IAuthorizationHandler, PostAuthorizationHandler>();
-//var serviceProvider = services.BuildServiceProvider();
-
 
 
 
@@ -64,4 +57,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+using (var seederScope = app.Services.CreateScope())
+{
+    await seederScope.ServiceProvider.GetRequiredService<IDataSeederService>().MigrateAndSeed();
+}
 app.Run();
