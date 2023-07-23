@@ -84,18 +84,18 @@ namespace CollectionWebApp.BusinessManagers
             }
         }
 
-        // public async Task<AdminDashboardViewModel> GetAdminDashboardViewModel(bool showUnpublishedPosts)
-        // {
-        //    var publishedPosts = await postQuery.GetPublishedPosts();
+       //  public async Task<AdminDashboardViewModel> GetAdminDashboardViewModel(bool showUnpublishedPosts)
+         //{
+        //    var publishedPosts = await postBusinessManager.GetPublishedPosts();
         //    var unpublishedPosts = showUnpublishedPosts ? await posQuery.GetUnpublishedPosts() : null;
-        //
-        //    var viewModel = new AdminDashboardViewModel
-        //    {
-        //      PublishedPosts = publishedPosts,
-        //     UnpublishedPosts = unpublishedPosts
-        //  };
+        
+         //  var viewModel = new AdminDashboardViewModel
+           // {
+         //    PublishedPosts = publishedPosts,
+         //   UnpublishedPosts = unpublishedPosts
+       //  };
 
-        //   return viewModel;
-        // }
+      //    return viewModel;
+       // }
     }
 }

@@ -21,11 +21,10 @@ namespace CollectionWebApp.Controllers
 
         }
 
-      //  public async Task<IActionResult> Index()
-       // {
-            //return View(await adminBusinessManager.GetAdminDashboard(User));
-
-       // }
+       public async Task<IActionResult> Index()
+       {
+            return View(await adminBusinessManager.GetAdminDashboard(User));
+       }
 
         public async Task<IActionResult> About()
         {
@@ -38,15 +37,15 @@ namespace CollectionWebApp.Controllers
             await adminBusinessManager.UpdateAbout(aboutViewModel, User);
             return RedirectToAction("About");
         }
-         [HttpPost]
-         public async Task<IActionResult> Index()
-         {
-           bool isAdmin = User.IsInRole(ApplicationUserRole.Admin.ToString());
+        // [HttpPost]
+       //  public async Task<IActionResult> Index()
+       //  {
+        //   bool isAdmin = User.IsInRole(ApplicationUserRole.Admin.ToString());
 
-           var viewModel = await adminBusinessManager.GetAdminDashboardViewModel(isAdmin);
+         //  var viewModel = await adminBusinessManager.GetAdminDashboardViewModel(isAdmin);
 
-          return View(viewModel);
-         }
+         // return View(viewModel);
+       //  }
 
     }
 }
