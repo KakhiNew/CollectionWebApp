@@ -36,7 +36,7 @@ namespace CollectionWebApp.BusinessManagers
             int pageSize = 20;
             int pageNumber = page ?? 1;
 
-            var postsQuery = postService.GetPosts(searchString ?? string.Empty);
+            var postsQuery = postService.GetPostsByTitle(searchString ?? string.Empty);
             if (onlyPublished)
             {
                 postsQuery = postsQuery.Where(post => post.Published);

@@ -5,9 +5,9 @@ namespace CollectionWebApp.BusinessManagers.Interfaces
 {
     public interface IAdminBusinessManager
     {
-        Task<IndexVm> GetAdminDashboard(ClaimsPrincipal claimsPrincipal);
-        Task<AboutViewModel> GetAboutViewModel(ClaimsPrincipal claimsPrincipal);
-        Task UpdateAbout(AboutViewModel aboutViewModel, ClaimsPrincipal claimsPrincipal);
+        Task<IndexVm> GetAdminDashboard(ClaimsPrincipal user);
+        Task<AboutViewModel> GetAboutViewModel(ClaimsPrincipal user);
+        Task UpdateAbout(AboutViewModel aboutViewModel, ClaimsPrincipal user);
        
     }
 }

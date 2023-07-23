@@ -26,7 +26,7 @@ namespace CollectionWebApp.Services
         }
 
 
-        public IEnumerable<Post> GetPosts(string searchString)
+        public IEnumerable<Post> GetPostsByTitle(string searchString)
         {
             return applicationDbContext.Posts
                 .OrderByDescending(post => post.UpdatedOn)
@@ -35,7 +35,7 @@ namespace CollectionWebApp.Services
                 .Where(post => post.Title.Contains(searchString) || post.Content.Contains(searchString));
         }
 
-        public IEnumerable<Post> GetPosts(ApplicationUser applicationUser)
+        public IEnumerable<Post> GetPostsByUser(ApplicationUser applicationUser)
         {
             return applicationDbContext.Posts
                 .Include(post => post.Creator)
@@ -44,6 +44,13 @@ namespace CollectionWebApp.Services
                 .Where(post => post.Creator == applicationUser);
         }
 
+        public IEnumerable<Post> GetAllPosts()
+        {
+            return applicationDbContext.Posts
+                .Include(post => post.Creator)
+                .Include(post => post.Approver)
+                .Include(post => post.Comments);
+        }
 
         public Comment GetComment(int commentId)
         {

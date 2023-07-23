@@ -9,15 +9,19 @@ namespace CollectionWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPostBusinessManager postBusinessManager;
-        private readonly IHomeBusinessManager homeBusinessManager;
-        private readonly IAdminBusinessManager adminBusinessManager;
+        private readonly IPostBusinessManager _postBusinessManager;
+        private readonly IHomeBusinessManager _homeBusinessManager;
+        private readonly IAdminBusinessManager _adminBusinessManager;
 
-        public HomeController( IPostBusinessManager postBusinessManager)
+        public HomeController( 
+            IPostBusinessManager postBusinessManager,
+            IHomeBusinessManager homeBusinessManager,
+            IAdminBusinessManager adminBusinessManager
+            )
         {
-            this.postBusinessManager = postBusinessManager;
-            this.homeBusinessManager = homeBusinessManager;
-            this.adminBusinessManager = adminBusinessManager;
+            _postBusinessManager = postBusinessManager;
+            _homeBusinessManager = homeBusinessManager;
+            _adminBusinessManager = adminBusinessManager;
 
         }
 
@@ -25,13 +29,14 @@ namespace CollectionWebApp.Controllers
         public IActionResult Index(string searchString, int? page)
         {
              bool isAdmin = User.IsInRole(ApplicationUserRole.Admin.ToString()); 
-             return View(postBusinessManager.GetIndexViewModel(searchString, page, !isAdmin));
+             return View(_postBusinessManager.GetIndexViewModel(searchString, page, onlyPublished: !isAdmin));
             
         }
 
+        
         public IActionResult Author(string authorId, string searchString, int? page)
         {
-            var actionResult = homeBusinessManager.GetAuthorViewModel(authorId, searchString, page);
+            var actionResult = _homeBusinessManager.GetAuthorViewModel(authorId, searchString, page);
             if (actionResult.Result is null)
                 return View(actionResult.Value);
 

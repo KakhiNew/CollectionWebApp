@@ -1,4 +1,5 @@
 ﻿@model CollectionWebApp.Models.PostViewModel.EditVm
+
 <div class="container-fluid">
     <h1 class="mt-4">Edit</h1>
     <div class="row">
@@ -37,7 +38,7 @@
                             <input type="checkbox" data-toggle="toggle" asp-for="Post.Published">
                             </br>
                             <button class="btn btn-primary" type="submit">Submit</button>
-                            <button class="btn btn-danger float-right" type="button" data-toggle="modal" data-target="#confirmDeleteModal">
+                            <button asp-controller="Post" asp-action="Delete" asp-route-id="@Model.Post.Id" class="btn btn-danger float-right" type="submit" data-toggle="modal" data-target="#confirmDeleteModal">
                                 Delete
                             </button>
                         </div>
@@ -49,7 +50,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+@*<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -70,7 +71,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 @section Scripts {
     <script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/classic/ckeditor.js"></script>
     <script>

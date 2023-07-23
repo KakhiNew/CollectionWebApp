@@ -34,7 +34,7 @@ namespace CollectionWebApp.BusinessManagers
             int pageSize = 20;
             int pageNumber = page ?? 1;
 
-            var posts = postService.GetPosts(searchString ?? string.Empty)
+            var posts = postService.GetPostsByTitle(searchString ?? string.Empty)
                 .Where(post => post.Published && post.Creator == applicationUser && post.Approved);
 
             return new AuthorVm

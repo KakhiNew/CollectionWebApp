@@ -5,12 +5,12 @@
       "PackagePath": "staticwebassets\\CollectionWebApp.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\10\\HeaderImage.jpg",
-      "PackagePath": "staticwebassets\\UserFiles\\Posts\\10\\HeaderImage.jpg"
-    },
-    {
       "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\11\\HeaderImage.jpg",
       "PackagePath": "staticwebassets\\UserFiles\\Posts\\11\\HeaderImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\12\\HeaderImage.jpg",
+      "PackagePath": "staticwebassets\\UserFiles\\Posts\\12\\HeaderImage.jpg"
     },
     {
       "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\1\\HeaderImage.jpg",

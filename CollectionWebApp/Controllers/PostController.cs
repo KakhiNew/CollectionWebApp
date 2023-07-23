@@ -77,7 +77,7 @@ namespace CollectionWebApp.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Post/Delete")]
         public async Task<IActionResult> Delete(int id)
         {
             var user = this.User;

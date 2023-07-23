@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "u/Jei7HQJp+/c+jWe02CXp9nQz1/ZgEqsGnMXNXdnQg=",
+  "Hash": "xfgyUrkXlKrjCXpRuNIqPZJQ72tiUhgpb5Wg7DTxIt4=",
   "Source": "CollectionWebApp",
   "BasePath": "_content/CollectionWebApp",
   "Mode": "Default",
@@ -2363,23 +2363,6 @@
       "OriginalItemSpec": "wwwroot\\UserFiles\\Posts\\1\\HeaderImage.jpg"
     },
     {
-      "Identity": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\10\\HeaderImage.jpg",
-      "SourceId": "CollectionWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\",
-      "BasePath": "_content/CollectionWebApp",
-      "RelativePath": "UserFiles/Posts/10/HeaderImage.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\UserFiles\\Posts\\10\\HeaderImage.jpg"
-    },
-    {
       "Identity": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\11\\HeaderImage.jpg",
       "SourceId": "CollectionWebApp",
       "SourceType": "Discovered",
@@ -2395,6 +2378,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UserFiles\\Posts\\11\\HeaderImage.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\12\\HeaderImage.jpg",
+      "SourceId": "CollectionWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\",
+      "BasePath": "_content/CollectionWebApp",
+      "RelativePath": "UserFiles/Posts/12/HeaderImage.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserFiles\\Posts\\12\\HeaderImage.jpg"
     },
     {
       "Identity": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\UserFiles\\Posts\\6\\HeaderImage.jpg",

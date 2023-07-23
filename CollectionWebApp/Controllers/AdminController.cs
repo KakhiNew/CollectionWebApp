@@ -11,30 +11,33 @@ namespace CollectionWebApp.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        private readonly IAdminBusinessManager adminBusinessManager;
-        private readonly IPostBusinessManager postBusinessManager;
+        private readonly IAdminBusinessManager _adminBusinessManager;
+        private readonly IPostBusinessManager _postBusinessManager;
 
-        public AdminController(IAdminBusinessManager adminBusinessManager)
+        public AdminController(
+            IAdminBusinessManager adminBusinessManager,
+            IPostBusinessManager postBusinessManager
+            )
         {
-            this.adminBusinessManager = adminBusinessManager;
-            this.postBusinessManager = postBusinessManager;
+            _adminBusinessManager = adminBusinessManager;
+            _postBusinessManager = postBusinessManager;
 
         }
 
        public async Task<IActionResult> Index()
        {
-            return View(await adminBusinessManager.GetAdminDashboard(User));
+            return View(await _adminBusinessManager.GetAdminDashboard(User));
        }
 
         public async Task<IActionResult> About()
         {
-            return View(await adminBusinessManager.GetAboutViewModel(User));
+            return View(await _adminBusinessManager.GetAboutViewModel(User));
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateAbout(AboutViewModel aboutViewModel)
         {
-            await adminBusinessManager.UpdateAbout(aboutViewModel, User);
+            await _adminBusinessManager.UpdateAbout(aboutViewModel, User);
             return RedirectToAction("About");
         }
         // [HttpPost]

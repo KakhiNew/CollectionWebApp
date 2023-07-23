@@ -10,13 +10,11 @@ namespace CollectionWebApp.BusinessManagers
 {
     public class AdminBusinessManager : IAdminBusinessManager
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IPostService postService;
-        private readonly IUserService userService;
-        private readonly IWebHostEnvironment webHostEnvironment;
-        private readonly IPostBusinessManager postBusinessManager;
-
-
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IPostService _postService;
+        private readonly IUserService _userService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IPostBusinessManager _postBusinessManager;
 
         public AdminBusinessManager(
              UserManager<ApplicationUser> userManager,
@@ -24,18 +22,24 @@ namespace CollectionWebApp.BusinessManagers
             IUserService userService,
             IWebHostEnvironment webHostEnvironment)
         {
-            this.userManager = userManager;
-            this.postService = postService;
-            this.userService = userService;
-            this.webHostEnvironment = webHostEnvironment;
+            _userManager = userManager;
+            _postService = postService;
+            _userService = userService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
-        public async Task<IndexVm> GetAdminDashboard(ClaimsPrincipal claimsPrincipal)
+        public async Task<IndexVm> GetAdminDashboard(ClaimsPrincipal user)
         {
-            var applicationUser = await userManager.GetUserAsync(claimsPrincipal);
+            bool isAdmin = user.IsInRole(ApplicationUserRole.Admin.ToString());
+            ApplicationUser? applicationUser = await _userManager.GetUserAsync(user);
+
+            IEnumerable<Post> posts = isAdmin
+                ? _postService.GetAllPosts()
+                : _postService.GetPostsByUser(applicationUser);
+
             return new IndexVm
             {
-                Posts = postService.GetPosts(applicationUser)
+                Posts = posts
             };
 
 
@@ -43,7 +47,7 @@ namespace CollectionWebApp.BusinessManagers
 
         public async Task<AboutViewModel> GetAboutViewModel(ClaimsPrincipal claimsPrincipal)
         {
-            var applicationUser = await userManager.GetUserAsync(claimsPrincipal);
+            var applicationUser = await _userManager.GetUserAsync(claimsPrincipal);
             return new AboutViewModel
             {
                 ApplicationUser = applicationUser,
@@ -54,14 +58,14 @@ namespace CollectionWebApp.BusinessManagers
 
         public async Task UpdateAbout(AboutViewModel aboutViewModel, ClaimsPrincipal claimsPrincipal)
         {
-            var applicationUser = await userManager.GetUserAsync(claimsPrincipal);
+            var applicationUser = await _userManager.GetUserAsync(claimsPrincipal);
 
             applicationUser.SubHeader = aboutViewModel.SubHeader;
             applicationUser.AboutContent = aboutViewModel.Content;
 
             if (aboutViewModel.HeaderImage != null)
             {
-                string webRootPath = webHostEnvironment.WebRootPath;
+                string webRootPath = _webHostEnvironment.WebRootPath;
                 string pathToImage = $@"{webRootPath}\UserFiles\Users\{applicationUser.Id}\HeaderImage.jpg";
 
                 EnsureFolder(pathToImage);
@@ -72,7 +76,7 @@ namespace CollectionWebApp.BusinessManagers
                 }
             }
 
-            await userService.Update(applicationUser);
+            await _userService.Update(applicationUser);
         }
 
         private void EnsureFolder(string path)
