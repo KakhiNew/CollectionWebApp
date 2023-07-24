@@ -33,22 +33,6 @@
       "PackagePath": "staticwebassets\\UserFiles\\Users\\f8ec4f4d-b352-4480-9d13-63f4bfd6cdeb\\HeaderImage.jpg"
     },
     {
-      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\Vendor\\about.html",
-      "PackagePath": "staticwebassets\\Vendor\\about.html"
-    },
-    {
-      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\Vendor\\contact.html",
-      "PackagePath": "staticwebassets\\Vendor\\contact.html"
-    },
-    {
-      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\Vendor\\index.html",
-      "PackagePath": "staticwebassets\\Vendor\\index.html"
-    },
-    {
-      "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\Vendor\\post.html",
-      "PackagePath": "staticwebassets\\Vendor\\post.html"
-    },
-    {
       "Id": "C:\\Users\\kk\\source\\repos\\CollectionWebApp\\CollectionWebApp\\wwwroot\\assets\\demo\\chart-area-demo.js",
       "PackagePath": "staticwebassets\\assets\\demo\\chart-area-demo.js"
     },
